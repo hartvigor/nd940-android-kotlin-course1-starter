@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.udacity.shoestore.R
@@ -17,7 +18,7 @@ import com.udacity.shoestore.viewmodels.ShoeListViewModel
 
 class ShoeListFragment: Fragment() {
 
-    private lateinit var viewModel: ShoeListViewModel
+    private val viewModel: ShoeListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +41,7 @@ class ShoeListFragment: Fragment() {
 
 
         // Aquire the viewmodel
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
 
         //TEST ADD SHOE
         val shoe = Shoe(name = "Air", size = 42.0, company = "Nike", description = "Nice shoes!")
