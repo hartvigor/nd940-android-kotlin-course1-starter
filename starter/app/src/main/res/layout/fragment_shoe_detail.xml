@@ -8,15 +8,12 @@
         <variable
             name="viewModel"
             type="com.udacity.shoestore.viewmodels.ShoeListViewModel" />
-        <variable
-            name="shoeModel"
-            type="com.udacity.shoestore.models.Shoe" />
     </data>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -34,7 +31,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{shoeModel.name}"
+            android:text="@{}"
             tools:text="Shoe name"/>
 
         <EditText
