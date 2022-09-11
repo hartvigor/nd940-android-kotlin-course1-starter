@@ -9,10 +9,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.databinding.ListItemShoeBinding
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.viewmodels.ShoeListViewModel
 
@@ -26,27 +28,46 @@ class ShoeListFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding: FragmentShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
-
         binding.lifecycleOwner = this
 
-        //val myLayout: LinearLayout = view?.findViewById(R.id.shoeDetailLayout) as LinearLayout
-        (view as? ViewGroup)?. let {
-            View.inflate(context, R.layout.fragment_shoe_detail, container)
-        }
-
         binding.actionButtonShoelist.setOnClickListener { view: View ->
-            Navigation.findNavController(view).navigate(R.id.action_shoeListFragment_to_shoeDetail)
+            addShoe()
+            //Navigation.findNavController(view).navigate(R.id.action_shoeListFragment_to_shoeDetail)
         }
 
+        viewModel.shoeList.observe(viewLifecycleOwner) { shoeList ->
 
+            /**
+             * removeALlViews() must be called before adding a new view or else it is
+             * just added in addition to the existing and not replaced.
+             */
+            binding.shoeListLayout.removeAllViews()
 
-        // Aquire the viewmodel
-        //viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+            /**
+             * Iterates through the shoeLists and adds each element (Shoe) to the view
+             * when the livedata is updated.
+             */
+            shoeList.forEach {
+                val shoesBinding = DataBindingUtil.inflate<ListItemShoeBinding>(
+                    inflater, R.layout.list_item_shoe, binding.shoeListLayout, false
+                )
+                //shoesBinding.shoe = it
+                shoesBinding.shoeName.text = it.name
+                shoesBinding.shoeSize.text = it.size.toString()
+                shoesBinding.shoeCompany.text = it.company
+                shoesBinding.shoeDescription.text = it.description
 
-        //TEST ADD SHOE
-        val shoe = Shoe(name = "Air", size = 42.0, company = "Nike", description = "Nice shoes!")
-        viewModel.addShoe(shoe)
+                binding.shoeListLayout.addView(shoesBinding.root)
+            }
+        }
+
+        addShoe()
 
         return binding.root
+    }
+
+    fun addShoe(){
+        val shoe = Shoe(name = "Air", size = 42.0, company = "Nike", description = "Nice shoes! ")
+        viewModel.addShoe(shoe)
     }
 }
