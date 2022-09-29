@@ -1,5 +1,6 @@
 package com.udacity.shoestore.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,8 @@ class ShoeListFragment: Fragment() {
     ): View? {
         val binding: FragmentShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
         binding.lifecycleOwner = this
+
+
 
         binding.actionButtonShoelist.setOnClickListener { view: View ->
             addShoe()
@@ -61,13 +64,21 @@ class ShoeListFragment: Fragment() {
             }
         }
 
-        addShoe()
-
+        //addShoe()
+        loadShoe()
         return binding.root
+    }
+
+    private fun loadShoe() {
+        if (!viewModel.firstShoe) {
+            addShoe()
+            viewModel.firstShoe = true
+        }
     }
 
     fun addShoe(){
         val shoe = Shoe(name = "Air", size = 42.0, company = "Nike", description = "Nice shoes! ")
+        //viewModel.shoes.add(shoe)
         viewModel.addShoe(shoe)
     }
 }

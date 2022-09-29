@@ -7,16 +7,14 @@ import com.udacity.shoestore.models.Shoe
 
 class ShoeListViewModel : ViewModel(){
 
+    var firstShoe = false
+
     var shoes  = mutableListOf<Shoe>()//Shoe(name = "Air", size = 42.0, company = "Nike", description = "Nice shoes!"))//MutableList<Shoe> //
 
     // List of shoes
     private val _shoeList = MutableLiveData<List<Shoe>>()//mutableListOf<Shoe>()
     val shoeList: LiveData<List<Shoe>>
         get() = _shoeList
-
-    init {
-        addShoe(Shoe("Kicks", 42.0, "Adidas", "Very nice!"))
-    }
 
     fun addShoe(newShoe: Shoe) {
         shoes.add(newShoe)
