@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.databinding.ListItemShoeBinding
@@ -51,17 +52,33 @@ class ShoeListFragment: Fragment() {
                 shoesBinding.shoeCompany.text = it.company
                 shoesBinding.shoeDescription.text = it.description
 
+                /**
+                 * The clicklistener needs to be set on each child view in
+                 * the scrollview insted of directly on the scrollview because of the
+                 * databinding to each view
+                 */
+
+                shoesBinding.root.setOnClickListener {v ->
+                    val clickIndex = binding.shoeListLayout.indexOfChild(v)
+                    editClickedShoe(clickIndex)
+                }
+
                 binding.shoeListLayout.addView(shoesBinding.root)
             }
+            if (shoeList.isEmpty()) loadShoe()
         }
-        loadShoe()
         return binding.root
     }
 
-    private fun loadShoe() {
-        if (!viewModel.firstShoe) {
-            viewModel.addShoe(Shoe(name = "Air", size = 42.0, company = "Nike", description = "Nice shoes! "))
-            viewModel.firstShoe = true
+    private fun editClickedShoe(index: Int) {
+        val action = ShoeListFragmentDirections.actionShoeListFragmentToShoeDetail()
+        val bundle = Bundle().apply {
+            putInt("shoeIndex", index)
         }
+        findNavController().navigate(action.actionId, bundle)
+    }
+
+    private fun loadShoe() {
+        viewModel.addShoe(Shoe(name = "Air", size = 42.0, company = "Nike", description = "Nice shoes! "))
     }
 }

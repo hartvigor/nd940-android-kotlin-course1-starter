@@ -16,6 +16,15 @@ import com.udacity.shoestore.viewmodels.ShoeListViewModel
 class ShoeDetailFragment: Fragment() {
     lateinit var binding: FragmentShoeDetailBinding
     private lateinit var viewModel: ShoeListViewModel
+
+    private var shoeIndex: Int = -1
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            shoeIndex = it.getInt("shoeIndex", -1)
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,14 +42,40 @@ class ShoeDetailFragment: Fragment() {
         return binding.root
     }
 
-    fun saveShoe() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (shoeIndex != -1) {
+            setEditShowFields()
+        }
+    }
+
+    private fun setEditShowFields() {
+        val editShoe = viewModel.shoeList.value?.get(shoeIndex)
+        editShoe?.let {
+            binding.editShoeDetail.setText(it.name)
+            binding.editShowSize.setText(it.size.toString())
+            binding.editCompany.setText(it.company)
+            binding.editShoeDescription.setText(it.description)
+        }
+    }
+
+    private fun saveShoe() {
+        val shoe = createShoe()
+        if (shoeIndex == -1) {
+            viewModel.addShoe(shoe)
+        } else {
+            viewModel.editShoe(shoeIndex, shoe)
+        }
+    }
+
+    private fun createShoe(): Shoe {
         val shoeName = binding.editShoeDetail.text.toString()
         val shoeSize = binding.editShowSize.text.toString().toDouble()
         val shoeCompany = binding.editCompany.text.toString()
         val shoeDesc = binding.editShoeDescription.text.toString()
 
-        val newShoe = Shoe(shoeName, shoeSize, shoeCompany, shoeDesc)
-        viewModel.addShoe(newShoe)
+        return Shoe(shoeName, shoeSize, shoeCompany, shoeDesc)
+        //viewModel.addShoe(newShoe)
     }
 
 }
