@@ -13,7 +13,6 @@
             type="com.udacity.shoestore.models.Shoe" />
     </data>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,7 +35,6 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{shoeModel.name}"
             android:hint="Shoe name"/>
 
         <EditText
@@ -47,7 +45,6 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{shoeModel.company}"
             android:hint="Company"/>
 
         <EditText
@@ -58,8 +55,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{Double.toString(shoeModel.size)}"
-            android:hint="Show size"/>
+            android:hint="Shoe size"/>
 
         <EditText
             android:id="@+id/editShoeDescription"
