@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/shoeDetail"
-        android:name="com.udacity.shoestore.ui.ShoeDetail"
+        android:name="com.udacity.shoestore.ui.ShoeDetailFragment"
         android:label="ShoeDetail" >
     </fragment>
 </navigation>

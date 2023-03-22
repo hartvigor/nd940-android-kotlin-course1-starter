@@ -23,6 +23,7 @@
             android:id="@+id/textTitleShoeDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:text="Shoe Detail"
             android:textSize="24sp" />
@@ -31,55 +32,61 @@
             android:id="@+id/editShoeDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@{shoeModel.name}"
-            tools:text="Shoe name"/>
+            android:hint="Shoe name"/>
 
         <EditText
             android:id="@+id/editCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Company"/>
+            android:text="@{shoeModel.company}"
+            android:hint="Company"/>
 
         <EditText
             android:id="@+id/editShowSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Show size" />
+            android:text="@{Double.toString(shoeModel.size)}"
+            android:hint="Show size"/>
 
         <EditText
             android:id="@+id/editShoeDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Description"/>
+            android:hint="Description"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/buttonBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="Back" />
 
             <Button
                 android:id="@+id/buttonSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="Save"/>
         </LinearLayout>
 
