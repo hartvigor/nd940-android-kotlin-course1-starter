@@ -77,5 +77,4 @@ class ShoeDetailFragment: Fragment() {
         return Shoe(shoeName, shoeSize, shoeCompany, shoeDesc)
         //viewModel.addShoe(newShoe)
     }
-
 }
