@@ -51,6 +51,7 @@ class ShoeListFragment: Fragment() {
                 shoesBinding.shoeSize.text = it.size.toString()
                 shoesBinding.shoeCompany.text = it.company
                 shoesBinding.shoeDescription.text = it.description
+                shoesBinding.shoeImg.setImageResource(it.shoeIcon)
 
                 /**
                  * The clicklistener needs to be set on each child view in
@@ -81,7 +82,7 @@ class ShoeListFragment: Fragment() {
     }
 
     private fun loadShoe() {
-        viewModel.addShoe(Shoe(name = "Air", size = 42.0, company = "Nike", description = "Nice shoes! "))
+        viewModel.addShoe(Shoe("Air", 42.0, "Nike", "Nice shoes! ", R.drawable.sneakers))
     }
 
 
