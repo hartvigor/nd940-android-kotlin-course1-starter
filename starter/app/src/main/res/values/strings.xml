@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ShoeStore</string>
-    <string name="menu_logout">Logout</string>
 
     <!-- Login -->
     <string name="email">Email</string>
@@ -8,6 +7,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="create_new_login">Create new login</string>
+    <string name="menu_logout">Logout</string>
 
     <!-- Welcome fragment-->
     <string name="welcome_title">Welcome to the Shoe Store Inventory App</string>
@@ -16,19 +16,17 @@
 
     <!-- Instructions fragment -->
     <string name="instruction_title">How to Use the Shoe List</string>
-    <string name="instructions_message">Welcome to the Shoe Store Inventory app! With our app, you can easily manage your shoe inventory and keep track of all your stock in one place. Here\'s how to get started:\n\n1. To add a new shoe, simply tap the plus button at the bottom of the screen.\n\n2. This will take you to a new page where you can enter the details for your new shoe, including the name, size, description, and an optional icon.\n\n3. Once you\'ve entered all the information for your shoe, tap the save button to add it to your inventory.\n\n4. To edit or delete an existing shoe, simply tap on the shoe in the list and then tap the edit or delete button.\n\nThat\'s it! You\'re now ready to start managing your shoe inventory with ease. Tap the button below to get started!</string>
+    <string name="instructions_message">Welcome to the Shoe Store Inventory app! With our app, you can easily manage your shoe inventory and keep track of all your stock in one place. Here\'s how to get started:\n\n1. To add a new shoe, simply tap the plus button at the bottom of the screen.\n\n2. This will take you to a new page where you can enter the details for your new shoe, including the name, company, size, description, and an optional icon.\n\n3. Once you\'ve entered all the information for your shoe, tap the save button to add it to your inventory.\n\n4. To edit or delete an existing shoe, simply tap on the shoe in the list.\n\nThat\'s it! You\'re now ready to start managing your shoe inventory with ease. Tap the button below to get started!</string>
     <string name="instruction_button">Let\'s Get Started!</string>
+
+    <!-- Shoe Detail -->
+    <string name="back">Back</string>
+    <string name="save">Save</string>
     <string name="shoe_detail">Shoe Detail</string>
     <string name="shoe_name">Shoe name</string>
     <string name="company">Company</string>
     <string name="shoe_size">Shoe size</string>
     <string name="description">Description</string>
-    <string name="back">Back</string>
-    <string name="save">Save</string>
     <string name="plus_icon">Plus icon</string>
-
-    <!-- Shoe Detail -->
-
-
 
 </resources>
