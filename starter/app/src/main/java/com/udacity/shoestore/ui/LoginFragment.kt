@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -15,8 +16,12 @@ class LoginFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding: FragmentLoginBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
+
+        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
+
+        toolbar.title = "Login"
 
         binding.createLoginButton.setOnClickListener { view: View ->
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_welcomeFragment)

@@ -2,6 +2,7 @@ package com.udacity.shoestore.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -26,6 +27,10 @@ class ShoeListFragment: Fragment() {
     ): View {
         val binding: FragmentShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
         binding.lifecycleOwner = this
+
+        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
+
+        toolbar.title = "Shoe list"
 
         binding.actionButtonShoelist.setOnClickListener { view: View ->
             Navigation.findNavController(view).navigate(R.id.action_shoeListFragment_to_shoeDetail)

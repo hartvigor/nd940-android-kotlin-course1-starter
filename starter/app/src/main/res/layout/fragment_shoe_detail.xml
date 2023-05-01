@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="Shoe Detail"
+            android:text="@string/shoe_detail"
             android:textSize="24sp" />
 
         <EditText
@@ -35,7 +35,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Shoe name"/>
+            android:hint="@string/shoe_name"/>
 
         <EditText
             android:id="@+id/editCompany"
@@ -45,7 +45,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Company"/>
+            android:hint="@string/company"/>
 
         <EditText
             android:id="@+id/editShowSize"
@@ -54,8 +54,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Shoe size"/>
+            android:inputType="number"
+            android:hint="@string/shoe_size"/>
 
         <EditText
             android:id="@+id/editShoeDescription"
@@ -65,7 +65,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Description"/>
+            android:hint="@string/description"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/iconRecylerView"
@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="16dp"
+            tools:listitem="@layout/list_item_shoe"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="4"/>
 
@@ -86,13 +87,13 @@
                 android:id="@+id/buttonBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Back" />
+                android:text="@string/back" />
 
             <Button
                 android:id="@+id/buttonSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save"/>
+                android:text="@string/save"/>
         </LinearLayout>
 
     </LinearLayout>

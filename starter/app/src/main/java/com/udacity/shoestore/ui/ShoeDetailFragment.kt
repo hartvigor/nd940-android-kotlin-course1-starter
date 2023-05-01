@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -36,7 +37,13 @@ class ShoeDetailFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
+
+        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
+
+        toolbar.title = "Shoe detail"
+
         viewModel = ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
+
         binding.buttonSave.setOnClickListener {
             if (saveShoe()) {
                 findNavController().navigate(R.id.action_shoeDetail_to_shoeListFragment)
